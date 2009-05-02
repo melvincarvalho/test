@@ -574,6 +574,7 @@ If (i < 0)
   pointsTimer := (points + pointsSent)
   ;MsgBox ,,, %points%, 2
   PlaySound()
+  AddPoints(5)
   SetTimer, EndTimer, 60000
 return
 
@@ -611,6 +612,7 @@ If (i < 0)
   pointsTimer := (points + pointsSent)
   ;MsgBox ,,, %points%, 2
   PlaySound()
+  AddPoints(5)
   SetTimer, EndTimer5, 300000
 return
 
