@@ -46,7 +46,7 @@ points      = 0
 pointsSent  = 0
 pointsTimer = 0
 pointsURI  := "http://points4.me"
-points_threshold = 25
+points_threshold := 25
 ini := "yatl.ini"
 
 ; Init
@@ -433,10 +433,13 @@ yatlEscape:
 return
 
 GuiClose:
+return
+
 Quit:
 SaveAndExit:
 	SaveToDos(hList)
-        FlushQueue()
+;MsgBox Saveand exit flush
+	FlushQueue()
         ExitApp
 Return
 ;===============================================================================
@@ -644,12 +647,14 @@ AddPoints(p) {
   global points
   global pointsSent
   global hList
+  global points_threshold
 
   AddToQueue(p)
 
   if ( points >= points_threshold ) 
   {
     pointsSent := (pointsSent + points)
+;MsgBox %points_threshold%
     FlushQueue()
   }
   
