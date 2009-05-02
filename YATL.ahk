@@ -632,7 +632,7 @@ Flush:
 return
 
 FlushQueue() {
-  global points, user
+  global points, user, pointsURI
 
   ;MsgBox http://points4.me/addpoints.php?u=%user%&points=%points%
   URLDownloadToFile, %pointsURI%/addpoints.php?u=%user%&points=%points% , points.txt
