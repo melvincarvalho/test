@@ -73,6 +73,7 @@ Hotkey, ^t,		Timer30
 Hotkey, ~NumpadDel,	CheckOffAndRemove
 Hotkey, ~Del,	CheckOffAndRemove
 Hotkey, ~s,	Archive
+Hotkey, +s,	ShowArchive
 Hotkey, ~.,	CheckOffAndRemove
 Hotkey, ~Right, Indent
 Hotkey, ~Left,	Dedent
@@ -299,6 +300,10 @@ Archive:
 FileAppend, %replaceStr%`r`n, todo.txt
 
 
+return
+
+ShowArchive:
+	Run todo.txt
 return
 
 _AddTask:
@@ -574,7 +579,7 @@ i := LB_GetCurrentSelection( hList )
 If (i < 0)
 	return
 
-  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!start1 %val%`r`n, yatl.log
+  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%%A_Min%:!start1`r`n, yatl.log
   pointsTimer := (points + pointsSent)
   ;MsgBox ,,, %points%, 2
   PlaySound()
@@ -588,7 +593,7 @@ EndTimer:
   val := (points + pointsSent) - pointsTimer
   MsgBox ,,, %val%, 2
   SetTimer, EndTimer, Off 
-  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!end1 %val%`r`n, yatl.log
+  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%%A_Min%:!end1 %val%`r`n, yatl.log
 return
 
 Timer5:
@@ -599,8 +604,8 @@ i := LB_GetCurrentSelection( hList )
 If (i < 0)
 	return
 
-  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!start5 %val%`r`n, yatl.log
-  pointsTimer := (points + pointsSent)
+  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%%A_Min%:!start5`r`n, yatl.log
+  pointsTimer5 := (points + pointsSent)
   ;MsgBox ,,, %points%, 2
   PlaySound()
   AddPoints(5)
@@ -609,10 +614,10 @@ return
 
 EndTimer5:
   PlaySound()
-  val := (points + pointsSent) - pointsTimer
+  val := (points + pointsSent) - pointsTimer5
   MsgBox ,,, %val%, 2
   SetTimer, EndTimer5, Off 
-  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!end5 %val%`r`n, yatl.log
+  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%%A_Min%:!end5 %val%`r`n, yatl.log
 return
 
 Timer30:
@@ -623,8 +628,8 @@ i := LB_GetCurrentSelection( hList )
 If (i < 0)
 	return
 
-  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!start30 %val%`r`n, yatl.log
-  pointsTimer := (points + pointsSent)
+  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%%A_Min%:!start30`r`n, yatl.log
+  pointsTimer30 := (points + pointsSent)
   ;MsgBox ,,, %points%, 2
   PlaySound()
   AddPoints(5)
@@ -633,10 +638,10 @@ return
 
 EndTimer30:
   PlaySound()
-  val := (points + pointsSent) - pointsTimer
+  val := (points + pointsSent) - pointsTimer30
   MsgBox ,,, %val%, 2
   SetTimer, EndTimer30, Off 
-  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!end30 %val%`r`n, yatl.log
+  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%%A_Min%:!end30 %val%`r`n, yatl.log
 return
 
 Flush:
