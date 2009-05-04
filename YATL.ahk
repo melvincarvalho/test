@@ -63,6 +63,8 @@ Hotkey, ~e,		_EditTask
 Hotkey, ~i,		Inc
 Hotkey, ~x,		CheckOffAndRemove
 Hotkey, ~a,		Add5
+Hotkey, +a,		Add50
+Hotkey, ^a,		Add100
 Hotkey, ~f,		Flush
 Hotkey, ~r,		Reload
 Hotkey, ~t,		Timer
@@ -600,6 +602,7 @@ EndTimer:
   val := (points + pointsSent) - pointsTimer
   MsgBox ,,, %val%, 2
   SetTimer, EndTimer, Off 
+  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!End1 %val%`r`n, yatl.log
 return
 
 Timer5:
@@ -622,6 +625,7 @@ EndTimer5:
   val := (points + pointsSent) - pointsTimer
   MsgBox ,,, %val%, 2
   SetTimer, EndTimer5, Off 
+  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!End5 %val%`r`n, yatl.log
 return
 
 Timer30:
@@ -636,7 +640,8 @@ If (i < 0)
   ;MsgBox ,,, %points%, 2
   PlaySound()
   AddPoints(5)
-  SetTimer, EndTimer30, 300000
+  SetTimer, EndTimer30, 1800000
+  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!End30 %val%`r`n, yatl.log
 return
 
 EndTimer30:
@@ -706,6 +711,26 @@ Add5:
 	If (i < 0)
 		return
         AddPoints(5)
+return
+
+Add50:
+	GuiControlGet, focused_control, focusv
+	If ( focused_control != "yatl_list" )
+		return	
+	i := LB_GetCurrentSelection( hList )
+	If (i < 0)
+		return
+        AddPoints(50)
+return
+
+Add100:
+	GuiControlGet, focused_control, focusv
+	If ( focused_control != "yatl_list" )
+		return	
+	i := LB_GetCurrentSelection( hList )
+	If (i < 0)
+		return
+        AddPoints(100)
 return
 
 
