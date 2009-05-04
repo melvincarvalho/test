@@ -574,6 +574,7 @@ i := LB_GetCurrentSelection( hList )
 If (i < 0)
 	return
 
+  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!start1 %val%`r`n, yatl.log
   pointsTimer := (points + pointsSent)
   ;MsgBox ,,, %points%, 2
   PlaySound()
@@ -581,28 +582,13 @@ If (i < 0)
   SetTimer, EndTimer, 60000
 return
 
-PlaySound()
-{
-  global ini
-
-  IniRead,  sound, %ini%, core, sound, 0
-  if ( sound = 0 )
-  {
-    SoundBeep, 4800, 50
-  }
-  else
-  {
-    SoundPlay, %A_WinDir%\Media\ding.wav
-  }
-}
-
 
 EndTimer:
   PlaySound()
   val := (points + pointsSent) - pointsTimer
   MsgBox ,,, %val%, 2
   SetTimer, EndTimer, Off 
-  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!End1 %val%`r`n, yatl.log
+  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!end1 %val%`r`n, yatl.log
 return
 
 Timer5:
@@ -613,6 +599,7 @@ i := LB_GetCurrentSelection( hList )
 If (i < 0)
 	return
 
+  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!start5 %val%`r`n, yatl.log
   pointsTimer := (points + pointsSent)
   ;MsgBox ,,, %points%, 2
   PlaySound()
@@ -625,7 +612,7 @@ EndTimer5:
   val := (points + pointsSent) - pointsTimer
   MsgBox ,,, %val%, 2
   SetTimer, EndTimer5, Off 
-  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!End5 %val%`r`n, yatl.log
+  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!end5 %val%`r`n, yatl.log
 return
 
 Timer30:
@@ -636,12 +623,12 @@ i := LB_GetCurrentSelection( hList )
 If (i < 0)
 	return
 
+  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!start30 %val%`r`n, yatl.log
   pointsTimer := (points + pointsSent)
   ;MsgBox ,,, %points%, 2
   PlaySound()
   AddPoints(5)
   SetTimer, EndTimer30, 1800000
-  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!End30 %val%`r`n, yatl.log
 return
 
 EndTimer30:
@@ -649,6 +636,7 @@ EndTimer30:
   val := (points + pointsSent) - pointsTimer
   MsgBox ,,, %val%, 2
   SetTimer, EndTimer30, Off 
+  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:!end30 %val%`r`n, yatl.log
 return
 
 Flush:
@@ -670,6 +658,20 @@ FlushQueue() {
   pointsSent := 0
 
   PlaySound()
+}
+
+PlaySound() {
+  global ini
+
+  IniRead,  sound, %ini%, core, sound, 0
+  if ( sound = 0 )
+  {
+    SoundBeep, 4800, 50
+  }
+  else
+  {
+    SoundPlay, %A_WinDir%\Media\ding.wav
+  }
 }
 
 AddPoints(p) {
