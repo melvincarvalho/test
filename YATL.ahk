@@ -246,7 +246,7 @@ if val1
 else
   AddPoints(5)
 
-FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%:%A_Min%%replaceStr%`r`n, yatl.log
+FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%%A_Min%:%replaceStr%`r`n, yatl.log
 
 
 return
@@ -591,7 +591,13 @@ return
 EndTimer:
   PlaySound()
   val := (points + pointsSent) - pointsTimer
-  MsgBox ,,, %val%, 2
+  ;MsgBox ,,, %val%, 2
+
+  Progress, m2 b fs18 zh0, Score (1 min):`n%val%, , ,
+  WinSet, Transparent, 130, %A_ScriptName%
+  Sleep, 2000
+  Progress, Off
+
   SetTimer, EndTimer, Off 
   FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%%A_Min%:!end1 %val%`r`n, yatl.log
 return
@@ -615,7 +621,12 @@ return
 EndTimer5:
   PlaySound()
   val := (points + pointsSent) - pointsTimer5
-  MsgBox ,,, %val%, 2
+
+  Progress, m2 b fs18 zh0, Score (5 mins):`n%val%, , ,
+  WinSet, Transparent, 130, %A_ScriptName%
+  Sleep, 2000
+  Progress, Off
+
   SetTimer, EndTimer5, Off 
   FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%%A_Min%:!end5 %val%`r`n, yatl.log
 return
@@ -639,7 +650,12 @@ return
 EndTimer30:
   PlaySound()
   val := (points + pointsSent) - pointsTimer30
-  MsgBox ,,, %val%, 2
+
+  Progress, m2 b fs18 zh0, Score (30 mins):`n%val%, , ,
+  WinSet, Transparent, 130, %A_ScriptName%
+  Sleep, 2000
+  Progress, Off
+
   SetTimer, EndTimer30, Off 
   FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%%A_Min%:!end30 %val%`r`n, yatl.log
 return
