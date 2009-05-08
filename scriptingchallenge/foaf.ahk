@@ -15,7 +15,7 @@ Gui, Show, x131 y91 h83 w321, Create Account
 Return
 
 Create:
-Gui, Submit
+Gui, Submit, NoHide
   Run http://foaf.me/%Nick%
 Return
 
