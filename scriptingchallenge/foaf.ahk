@@ -1,6 +1,9 @@
 IniRead,  createuri, foaf.ini, core, createuri, http://foaf.me
 IniWrite, %createuri%, foaf.ini, core, createuri
 
+IniRead,  certuri, foaf.ini, core, certuri, https://foaf.me/cert.php
+IniWrite, %certuri%, foaf.ini, core, certuri
+
 
 Gui, Add, GroupBox, x0 y0 w320 h80 , Create Account
 Gui, Add, Edit, vNick x71 y20 w230 h20 , johnsmith
@@ -16,16 +19,19 @@ Return
 
 Create:
 Gui, Submit, NoHide
-  Run http://foaf.me/%Nick%
+  Run %createuri%/%Nick%
+  IniWrite, %createuri%/%Nick%, foaf.ini, core, webid
 Return
 
 Submit:
-Gui, Submit
-  Run https://foaf.me/cert.php?foaf=http://foaf.me/%Nick%
+Gui, Submit, NoHide
+  MsgBox Save the following file in a safe place, and then import into your browser
+  Run %certuri%?foaf=%createuri%/%Nick%
 Return
 
 Configure:
-Gui, Submit
+  MsgBox Change createuri and certuri to run off another server (inc. localally) and restart
+  Gui, Submit, NoHide
   Run foaf.ini
 Return
 
