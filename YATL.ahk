@@ -63,17 +63,17 @@ Hotkey, ~e,		_EditTask
 Hotkey, ~i,		Inc
 Hotkey, ~x,		CheckOffAndRemove
 Hotkey, ~a,		Add5
-Hotkey, +a,		Add50
+Hotkey, ~+a,		Add50
 Hotkey, ^a,		Add100
 Hotkey, ~f,		Flush
 Hotkey, ~r,		Reload
 Hotkey, ~t,		Timer
-Hotkey, +t,		Timer5
+Hotkey, ~+t,		Timer5
 Hotkey, ^t,		Timer30
 Hotkey, ~NumpadDel,	CheckOffAndRemove
 Hotkey, ~Del,	CheckOffAndRemove
 Hotkey, ~s,	Archive
-Hotkey, +s,	ShowArchive
+Hotkey, ~+s,	ShowArchive
 Hotkey, ~.,	CheckOffAndRemove
 Hotkey, ~Right, Indent
 Hotkey, ~Left,	Dedent
@@ -253,8 +253,10 @@ return
 
 Archive:
 	GuiControlGet, focused_control, focusv
+
 	If ( focused_control != "yatl_list" )
 		return	
+;MsgBox %focused_control%
 	i := LB_GetCurrentSelection( hList )
 	If (i < 0)
 		return
@@ -303,6 +305,11 @@ FileAppend, %replaceStr%`r`n, todo.txt
 return
 
 ShowArchive:
+	GuiControlGet, focused_control, focusv
+	If ( focused_control != "yatl_list" )
+		return	
+;MsgBox %focused_control%
+	Gui, Submit, NoHide
 	Run todo.txt
 return
 
