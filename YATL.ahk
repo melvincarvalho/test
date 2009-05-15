@@ -582,9 +582,6 @@ Timer:
 GuiControlGet, focused_control, focusv
 If ( focused_control != "yatl_list" )
 	return	
-i := LB_GetCurrentSelection( hList )
-If (i < 0)
-	return
 
   FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%%A_Min%:!start1`r`n, yatl.log
   pointsTimer := (points + pointsSent)
@@ -613,9 +610,6 @@ Timer5:
 GuiControlGet, focused_control, focusv
 If ( focused_control != "yatl_list" )
 	return	
-i := LB_GetCurrentSelection( hList )
-If (i < 0)
-	return
 
   FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%%A_Min%:!start5`r`n, yatl.log
   pointsTimer5 := (points + pointsSent)
@@ -642,9 +636,6 @@ Timer30:
 GuiControlGet, focused_control, focusv
 If ( focused_control != "yatl_list" )
 	return	
-i := LB_GetCurrentSelection( hList )
-If (i < 0)
-	return
 
   FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%%A_Min%:!start30`r`n, yatl.log
   pointsTimer30 := (points + pointsSent)
@@ -671,9 +662,6 @@ Flush:
 	GuiControlGet, focused_control, focusv
 	If ( focused_control != "yatl_list" )
 		return	
-	i := LB_GetCurrentSelection( hList )
-	If (i < 0)
-		return
         FlushQueue()
 return
 
@@ -737,9 +725,6 @@ Add5:
 	GuiControlGet, focused_control, focusv
 	If ( focused_control != "yatl_list" )
 		return	
-	i := LB_GetCurrentSelection( hList )
-	If (i < 0)
-		return
         AddPoints(5)
 return
 
@@ -747,9 +732,6 @@ Add50:
 	GuiControlGet, focused_control, focusv
 	If ( focused_control != "yatl_list" )
 		return	
-	i := LB_GetCurrentSelection( hList )
-	If (i < 0)
-		return
         AddPoints(50)
 return
 
@@ -757,9 +739,6 @@ Add100:
 	GuiControlGet, focused_control, focusv
 	If ( focused_control != "yatl_list" )
 		return	
-	i := LB_GetCurrentSelection( hList )
-	If (i < 0)
-		return
         AddPoints(100)
 return
 
@@ -768,9 +747,6 @@ Reload:
 	GuiControlGet, focused_control, focusv
 	If ( focused_control != "yatl_list" )
 		return	
-	i := LB_GetCurrentSelection( hList )
-	If (i < 0)
-		return
 	FlushQueue()
 	Reload
 return
