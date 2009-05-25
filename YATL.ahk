@@ -85,6 +85,7 @@ Hotkey, #h,		ToggleHelpGui
 Hotkey, Escape, yatlEscape
 Hotkey, IfWinActive
 Hotkey, f11, ToggleMainGUI
+Hotkey, Break, Add5Global
 
 ; Create the Gui's
 ;---------------------------------------
@@ -599,7 +600,7 @@ EndTimer:
 
   Progress, m2 b fs18 zh0, Score (1 min):`n%val%, , ,
   WinSet, Transparent, 130, %A_ScriptName%
-  Sleep, 2000
+  Sleep, 4000
   Progress, Off
 
   SetTimer, EndTimer, Off 
@@ -625,7 +626,7 @@ EndTimer5:
 
   Progress, m2 b fs18 zh0, Score (5 mins):`n%val%, , ,
   WinSet, Transparent, 130, %A_ScriptName%
-  Sleep, 2000
+  Sleep, 4000
   Progress, Off
 
   SetTimer, EndTimer5, Off 
@@ -651,7 +652,7 @@ EndTimer30:
 
   Progress, m2 b fs18 zh0, Score (30 mins):`n%val%, , ,
   WinSet, Transparent, 130, %A_ScriptName%
-  Sleep, 2000
+  Sleep, 4000
   Progress, Off
 
   SetTimer, EndTimer30, Off 
@@ -725,6 +726,10 @@ Add5:
 	GuiControlGet, focused_control, focusv
 	If ( focused_control != "yatl_list" )
 		return	
+        AddPoints(5)
+return
+
+Add5Global:
         AddPoints(5)
 return
 
