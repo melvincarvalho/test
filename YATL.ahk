@@ -121,7 +121,7 @@ createGui() {
 	Gui, Add, Button, Default Hidden gAddOrEditTask, 
 	Gui, Show, AutoSize X%yatl_x% Y0, YATL
 	yatl_shown = 1
-        Winset, Transparent, 170
+        Winset, Transparent, 200
 	WinActivate
 }
 
