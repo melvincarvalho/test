@@ -589,7 +589,7 @@ If ( focused_control != "yatl_list" )
   ;MsgBox ,,, %points%, 2
   PlaySound()
   AddPoints(5)
-  SetTimer, EndTimer, 60000
+  SetTimer, EndTimer, 120000
 return
 
 
@@ -598,7 +598,7 @@ EndTimer:
   val := (points + pointsSent) - pointsTimer
   ;MsgBox ,,, %val%, 2
 
-  Progress, m2 b fs18 zh0, Score (1 min):`n%val%, , ,
+  Progress, m2 b fs18 zh0, Score (2 mins):`n%val%, , ,
   WinSet, Transparent, 130, %A_ScriptName%
   Sleep, 4000
   Progress, Off
