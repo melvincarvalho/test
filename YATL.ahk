@@ -86,6 +86,7 @@ Hotkey, Escape, yatlEscape
 Hotkey, IfWinActive
 Hotkey, f11, ToggleMainGUI
 Hotkey, Break, Add5Global
+Hotkey, CtrlBreak, Timer5
 
 ; Create the Gui's
 ;---------------------------------------
