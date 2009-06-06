@@ -86,7 +86,7 @@ Hotkey, Escape, yatlEscape
 Hotkey, IfWinActive
 Hotkey, f11, ToggleMainGUI
 Hotkey, Break, Add5Global
-Hotkey, CtrlBreak, Timer5
+Hotkey, PrintScreen, Timer5
 
 ; Create the Gui's
 ;---------------------------------------
@@ -612,6 +612,17 @@ Timer5:
 GuiControlGet, focused_control, focusv
 If ( focused_control != "yatl_list" )
 	return	
+
+  FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%%A_Min%:!start5`r`n, yatl.log
+  pointsTimer5 := (points + pointsSent)
+  ;MsgBox ,,, %points%, 2
+  PlaySound()
+  AddPoints(5)
+  SetTimer, EndTimer5, 300000
+return
+
+Timer5Global:
+GuiControlGet, focused_control, focusv
 
   FileAppend, %A_YYYY%%A_MM%%A_DD%:%A_Hour%%A_Min%:!start5`r`n, yatl.log
   pointsTimer5 := (points + pointsSent)
