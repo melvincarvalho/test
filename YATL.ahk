@@ -48,6 +48,7 @@ pointsTimer = 0
 pointsURI  := "http://points4.me"
 points_threshold := 25
 ini := "yatl.ini"
+editor := "notepad"
 
 ; Init
 ;---------------------------------------
@@ -71,22 +72,23 @@ Hotkey, ~t,		Timer
 Hotkey, ~+t,		Timer5
 Hotkey, ^t,		Timer30
 Hotkey, ~NumpadDel,	CheckOffAndRemove
-Hotkey, ~Del,	CheckOffAndRemove
-Hotkey, ~s,	Archive
-Hotkey, ~+s,	ShowArchive
-Hotkey, ~.,	CheckOffAndRemove
-Hotkey, ~Right, Indent
-Hotkey, ~Left,	Dedent
-Hotkey, +Up,	MoveUp
-Hotkey, +Down,	MoveDown
+Hotkey, ~Del,		CheckOffAndRemove
+Hotkey, ~s,		Archive
+Hotkey, ~l,		ShowLog
+Hotkey, ~+s,		ShowArchive
+Hotkey, ~.,		CheckOffAndRemove
+Hotkey, ~Right,		Indent
+Hotkey, ~Left,		Dedent
+Hotkey, +Up,		MoveUp
+Hotkey, +Down,		MoveDown
 Hotkey, #q,		Quit
 Hotkey, IfWinExist, YATL ahk_class AutoHotkeyGUI
 Hotkey, #h,		ToggleHelpGui
-Hotkey, Escape, yatlEscape
+Hotkey, Escape,		yatlEscape
 Hotkey, IfWinActive
-Hotkey, f11, ToggleMainGUI
-Hotkey, Break, Add5Global
-Hotkey, PrintScreen, Timer5
+Hotkey, f11,		ToggleMainGUI
+Hotkey, Break,		Add5Global
+Hotkey, PrintScreen,	Timer5
 
 ; Create the Gui's
 ;---------------------------------------
@@ -310,9 +312,14 @@ ShowArchive:
 	GuiControlGet, focused_control, focusv
 	If ( focused_control != "yatl_list" )
 		return	
-;MsgBox %focused_control%
-	Gui, Submit, NoHide
-	Run todo.txt
+	Run %editor% todo.txt
+return
+
+ShowLog:
+	GuiControlGet, focused_control, focusv
+	If ( focused_control != "yatl_list" )
+		return	
+	Run %editor% yatl.log
 return
 
 _AddTask:
@@ -831,3 +838,4 @@ json(ByRef js, s, v = "") {
 
 /*******************************************************************************
 /*************** DO NOT MODIFY BELOW THIS LINE: Saved YATL List ****************
+[50] bag
