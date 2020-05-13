@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a report to help us improve
+about: Issues raised are for bug fixes only.  For proposals and features requests see README.
 title: ''
 labels: ''
 assignees: ''
