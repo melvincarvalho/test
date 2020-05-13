@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Issues raised are for bug fixes only.  For proposals and features requests please see [README](/README.md).
+about: Issues raised are for bug fixes only.  For proposals and features requests please see README
 title: ''
 labels: ''
 assignees: ''
