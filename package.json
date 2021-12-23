@@ -1,0 +1,26 @@
+{
+  "name": "test_mc",
+  "version": "0.0.1",
+  "description": "test",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melvincarvalho/test.git"
+  },
+  "author": "Melvin Carvalho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/melvincarvalho/test/issues"
+  },
+  "homepage": "https://github.com/melvincarvalho/test#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "minimist": "^1.2.5",
+    "path": "^0.12.7",
+    "url": "^0.11.0"
+  }
+}

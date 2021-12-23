@@ -1,0 +1,12 @@
+[
+ {
+  "@id": "#this",
+  "@type": "Asset",
+  "amount": 100000000,
+  "name": "Test CZK",
+  "ticker": "TEST",
+  "description": "Test coin against my personal bank account",
+  "precision": 0,
+  "owner": "https://melvincarvalho.com/#me"
+ }
+]
